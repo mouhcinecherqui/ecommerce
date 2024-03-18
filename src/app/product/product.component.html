@@ -1,0 +1,44 @@
+<div
+  class="row justify-content-center p-2 text-dark"
+  style="
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  "
+>
+  <div
+    class="col-lg-3 col-md-4 col-sm-6"
+    *ngFor="let product of products; let i = index"
+    style="margin-left: 65px; margin-right: 65px"
+  >
+    <div class="card w-100 my-2 shadow-2-strong">
+      <img
+        [src]="product.image"
+        [alt]="product.title"
+        class="card-img-top"
+        style="aspect-ratio: 1 / 1"
+      />
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">${{ product.price }}</p>
+        <input
+          type="number"
+          [(ngModel)]="quantity"
+          min="1"
+          class="form-control form-control-sm"
+        />
+
+        <button
+          class="btn btn-primary shadow-0 me-1"
+          (click)="addToCart(product, quantity)"
+        >
+          Add to Cart
+        </button>
+        <button class="btn btn-warning shadow-0 me-1" (click)="goToCart()">
+          Go to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
